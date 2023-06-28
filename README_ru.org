@@ -1,0 +1,16 @@
+#+title: libeasydonate - API EasyDonate в Rust
+
+* libeasydonate
+Библиотека libeasydonate создана для удобного доступа к API [[https://easydonate.ru][EasyDonate]] из Rust.
+** HTTP клиенты
+У libeasydonate есть механизм адаптирования любого асинхронного Rust HTTP клиента для использования API.
+В самой библиотеке (с feature "reqwest") есть встроенный адаптер для клиента [[https://github.com/seanmonstar/reqwest][reqwest]].
+*** reqwest
+Пример использования:
+#+BEGIN_SRC rust
+let easydonate_config = EasyDonateConfig {
+    api_key: "<API ключ>".into()
+};
+let easydonate = EasyDonate::new(EasyDonateReqwest::new(easydonate_config));
+// ... использование easydonate ...
+#+END_SRC
